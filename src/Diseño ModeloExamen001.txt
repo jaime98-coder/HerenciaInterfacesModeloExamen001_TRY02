@@ -1,0 +1,146 @@
+package domotica
+· <<abstract>> DispositivoInteligente
+|
+|- Altavoz
+|- Luz
+|- Termostato
+|- CamaraSeguridad
+
+· <<interface>> ModificarNivel
+
+· <<interface>> EmitirAlerta
+
+package principal
+· Main
+
+----------------------------------------------------------------------
+<<abstract>> DispositivoInteligente implements Comparable<DispositivoInteligente>
+----------------------------------------------------------------------
+# nombreComercial: String
+# marca: String
+# precio: double
+# encendido: boolean = false
+----------------------------------------------------------------------
++ DispositivoInteligente (nombreComercial, marca, precio)
++ getNombreComercial(): String
++ getMarca(): String
++ getPrecio(): double
++ <<abstract>> encenderDispositivo(): void
++ <<abstract>> apagarDispositivo(): void
++ toString(): String
++ equals(): boolean
++ compareTo(): int
++ mostrarErrorApagado(): void
+----------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
+<<interface>> ModificarNivel
+----------------------------------------------------------------------
++ subirNivel(): void
++ bajarNivel(): void
++ mostrarNivelActual(): void
+----------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
+<<interface>> EmitirAlerta
+----------------------------------------------------------------------
++ activarAlerta(mensajeAlerta: String): void
++ desactivarAlerta(): void
++ informarAlertaActiva(): void
+----------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
+Altavoz extends DispositivoInteligente implements ModificarNivel
+----------------------------------------------------------------------
+- nombreAsistente: String
+- volumen: int = 30
+----------------------------------------------------------------------
++ Altavoz (nombreComercial, marca, precio, nombreAsistente, volumen)
++ toString(): String
+----------------------------------------------------------------------
+Hereda:
++ encenderDispositivo(): void
++ apagarDispositivo(): void
+----------------------------------------------------------------------
+Implementa:
++ subirNivel(): void
++ bajarNivel(): void
++ mostrarNivelActual(): void
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
+Luz extends DispositivoInteligente implements ModificarNivel
+----------------------------------------------------------------------
+- color: String = blanco
+- brillo: int = 50
+----------------------------------------------------------------------
++ Luz (nombreComercial, marca, precio)
++ toString(): String
+----------------------------------------------------------------------
+Hereda:
++ encenderDispositivo(): void
++ apagarDispositivo(): void
+----------------------------------------------------------------------
+Implementa:
++ subirNivel(): void
++ bajarNivel(): void
++ mostrarNivelActual(): void
+----------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
+Termostato extends DispositivoInteligente implements EmitirAlerta
+----------------------------------------------------------------------
+- temperaturaObjetivo: int
+- modoFuncionamiento: String = calor
+- alertaActiva: boolean = false
+- mensajeAlerta: String = "Sin mensaje"
+----------------------------------------------------------------------
++ Luz (nombreComercial, marca, precio, temperaturaObjetivo)
++ toString(): String
+----------------------------------------------------------------------
+Hereda:
++ encenderDispositivo(): void
++ apagarDispositivo(): void
+----------------------------------------------------------------------
+Implementa:
++ activarAlerta(mensajeAlerta: String): void
++ desactivarAlerta(): void
++ informarAlertaActiva(): void
+----------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
+CamaraSeguridad extends DispositivoInteligente implements EmitirAlerta
+----------------------------------------------------------------------
+- resolucion: int
+- grabando: boolean = false
+- alertaActiva: boolean = false
+- mensajeAlerta: String = "Sin mensaje"
+----------------------------------------------------------------------
++ CamaraSeguridad (nombreComercial, marca, precio, resolucion)
++ toString(): String
+----------------------------------------------------------------------
+Hereda:
++ encenderDispositivo(): void
++ apagarDispositivo(): void
+----------------------------------------------------------------------
+Implementa:
++ activarAlerta(mensajeAlerta: String): void
++ desactivarAlerta(): void
++ informarAlertaActiva(): void
+----------------------------------------------------------------------
+
+
+package principal
+----------------------------------------------------------------------
+Main
+----------------------------------------------------------------------
+- tablaDispositivos: DispositivoInteligente []
+----------------------------------------------------------------------
+- imprimirDispositivos(): void
+- crearDispositivo(): void
+
