@@ -10,6 +10,10 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 		this.nombreAsistente = nombreAsistente;
 	}
 
+	public String getNombreAsistente() {
+		return "Asistente: " + nombreAsistente;
+	}
+
 	@Override
 	public void subirNivel() {
 		if (this.encendido) {
