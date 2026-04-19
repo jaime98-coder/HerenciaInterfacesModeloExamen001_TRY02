@@ -49,8 +49,8 @@ public abstract class DispositivoInteligente implements Comparable<DispositivoIn
 	@Override
 	public boolean equals(Object obj) {
 		boolean sonIguales = false;
-		if (obj instanceof DispositivoInteligente) {
-			if (this.nombreComercial.equalsIgnoreCase(nombreComercial) && this.marca.equalsIgnoreCase(marca)) {
+		if (obj instanceof DispositivoInteligente dispositivo) {
+			if (nombreComercial.equalsIgnoreCase(dispositivo.nombreComercial) && marca.equalsIgnoreCase(dispositivo.marca)) {
 				sonIguales = true;
 			}
 		}
